@@ -60,7 +60,7 @@ public class MainActivity extends ActionBarActivity {
         mMakeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new API(mHandler).getUserID(mUsernameEditText.getText().toString());
+                new API(mHandler).getUserID(mUsernameEditText.getText().toString().trim());
             }
         });
 

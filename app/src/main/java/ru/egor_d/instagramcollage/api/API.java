@@ -3,6 +3,8 @@ package ru.egor_d.instagramcollage.api;
 import android.os.Handler;
 import android.os.Message;
 
+import java.util.List;
+
 import retrofit.Callback;
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;
@@ -26,11 +28,14 @@ public class API {
     }
 
     public void getUserID(String username) {
-        mService.getUserId(username, new Callback<InstagramResponse<InstagramUser>>() {
+        mService.getUserId(username, client_id, new Callback<InstagramResponse<List<InstagramUser>>>() {
             @Override
-            public void success(InstagramResponse<InstagramUser> instagramUserInstagramResponse, Response response) {
+            public void success(InstagramResponse<List<InstagramUser>> instagramUsers, Response response) {
                 Message msg = new Message();
-                msg.obj = instagramUserInstagramResponse.data.id;
+                if (instagramUsers.data.size() > 0)
+                    msg.obj = instagramUsers.data.get(0).id;
+                else
+                    msg.obj = "";
                 mHandler.sendMessage(msg);
             }
 
@@ -41,5 +46,9 @@ public class API {
                 mHandler.sendMessage(msg);
             }
         });
+    }
+
+    public void getUserMedia(String userID) {
+//    https://api.instagram.com/v1/users/[USER ID]/media/recent/?client_id=[CLIENT ID]
     }
 }
