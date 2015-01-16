@@ -1,6 +1,7 @@
 package ru.egor_d.instagramcollage;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -12,13 +13,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.activeandroid.query.Delete;
+
 import ru.egor_d.instagramcollage.api.API;
+import ru.egor_d.instagramcollage.model.InstagramPhoto;
 
 
 public class MainActivity extends ActionBarActivity {
     EditText mUsernameEditText;
     Button mMakeButton;
-    private final static String USER_ID = "userID";
+    public final static String USER_ID = "userID";
 
     Handler mHandler = new Handler() {
         @Override
@@ -39,7 +43,6 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         initViews();
 
         mUsernameEditText.addTextChangedListener(new TextWatcher() {
