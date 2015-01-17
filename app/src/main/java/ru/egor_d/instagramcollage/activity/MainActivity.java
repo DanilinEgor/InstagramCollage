@@ -1,7 +1,6 @@
-package ru.egor_d.instagramcollage;
+package ru.egor_d.instagramcollage.activity;
 
 import android.content.Intent;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -11,17 +10,17 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.activeandroid.query.Delete;
-
+import ru.egor_d.instagramcollage.R;
 import ru.egor_d.instagramcollage.api.API;
-import ru.egor_d.instagramcollage.model.InstagramPhoto;
 
 
 public class MainActivity extends ActionBarActivity {
     EditText mUsernameEditText;
     Button mMakeButton;
+    ProgressBar mProgressBar;
     public final static String USER_ID = "userID";
 
     Handler mHandler = new Handler() {
@@ -31,11 +30,12 @@ public class MainActivity extends ActionBarActivity {
             if (userID.equals("")) {
                 Toast.makeText(MainActivity.this, R.string.error, Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(MainActivity.this, userID, Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(MainActivity.this, CollageActivity.class);
+                Intent intent = new Intent(MainActivity.this, ChoosePhotosActivity.class);
                 intent.putExtra(USER_ID, userID);
                 startActivity(intent);
             }
+            mMakeButton.setVisibility(View.VISIBLE);
+            mProgressBar.setVisibility(View.GONE);
         }
     };
 
@@ -63,6 +63,8 @@ public class MainActivity extends ActionBarActivity {
         mMakeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mMakeButton.setVisibility(View.INVISIBLE);
+                mProgressBar.setVisibility(View.VISIBLE);
                 new API(mHandler).getUserID(mUsernameEditText.getText().toString().trim());
             }
         });
@@ -72,5 +74,6 @@ public class MainActivity extends ActionBarActivity {
     private void initViews() {
         mUsernameEditText = (EditText) findViewById(R.id.username_editText);
         mMakeButton = (Button) findViewById(R.id.make_button);
+        mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
     }
 }

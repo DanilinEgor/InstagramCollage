@@ -2,4 +2,7 @@
 <resources>
     <string name="make_collage">Давай коллаж</string>
     <string name="error">Произошла ошибка!</string>
+    <string name="please_wait">Пожалуйста, подождите</string>
+    <string name="choose_photos">Выберите до 9 фотографий</string>
+    <string name="choose_less_than_9">Максимум можно выбрать 9 фотографий</string>
 </resources>

@@ -12,8 +12,11 @@ public class InstagramPhoto extends Model {
     @Column(name = "photo_id")
     public String photo_id;
 
-    @Column(name = "url")
-    public String url;
+    @Column(name = "thumbnail")
+    public String thumbnail;
+
+    @Column(name = "low_resolution")
+    public String low_resolution;
 
     @Column(name = "likes")
     public int likes;
