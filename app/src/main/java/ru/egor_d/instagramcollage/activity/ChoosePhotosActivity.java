@@ -70,6 +70,7 @@ public class ChoosePhotosActivity extends Activity {
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
+        mMakeCollageButton.setEnabled(false);
         mMakeCollageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -90,5 +91,9 @@ public class ChoosePhotosActivity extends Activity {
     private void initViews() {
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         mMakeCollageButton = (Button) findViewById(R.id.make_button);
+    }
+
+    public void setMakeCollageButtonEnabled(boolean enabled) {
+        mMakeCollageButton.setEnabled(enabled);
     }
 }

@@ -65,6 +65,7 @@ public class InstagramPhotosAdapter extends RecyclerView.Adapter<InstagramPhotos
                         Toast.makeText(context, R.string.choose_less_than_9, Toast.LENGTH_SHORT).show();
                     }
                 }
+                ((ChoosePhotosActivity) context).setMakeCollageButtonEnabled(checkedPhotos.size() != 0);
             }
         });
     }
