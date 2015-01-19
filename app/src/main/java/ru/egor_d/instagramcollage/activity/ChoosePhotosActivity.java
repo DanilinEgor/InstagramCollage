@@ -63,7 +63,7 @@ public class ChoosePhotosActivity extends Activity {
 
         new Delete().from(InstagramPhoto.class).execute();
 
-        setContentView(R.layout.collage_activity);
+        setContentView(R.layout.choose_activity);
 
         initViews();
 

@@ -10,5 +10,9 @@
     <string name="please_wait">Пожалуйста, подождите</string>
     <string name="choose_photos">Выберите до 9 фотографий</string>
     <string name="choose_less_than_9">Максимум можно выбрать 9 фотографий</string>
+    <string name="send">Отправить</string>
+    <string name="email_text">Посмотри на коллаж из моих фотографий!</string>
+    <string name="email_subject">Коллаж из фотографий</string>
+    <string name="send_using">Послать через</string>
 
 </resources>
