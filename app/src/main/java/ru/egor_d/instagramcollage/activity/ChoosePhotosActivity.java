@@ -10,7 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
+import android.widget.ProgressBar;
 
 import com.activeandroid.query.Delete;
 import com.activeandroid.query.Select;
@@ -31,6 +31,7 @@ public class ChoosePhotosActivity extends Activity {
     private final static String TAG = "InstagramCollage";
     private RecyclerView mRecyclerView;
     private Button mMakeCollageButton;
+    private ProgressBar mProgressBar;
 
     public Handler mHandler = new Handler() {
         @Override
@@ -40,7 +41,8 @@ public class ChoosePhotosActivity extends Activity {
                     loadPhotos();
                     break;
                 case FAIL:
-                    Toast.makeText(ChoosePhotosActivity.this, R.string.error, Toast.LENGTH_SHORT).show();
+                    findViewById(R.id.unable_textView).setVisibility(View.VISIBLE);
+                    mProgressBar.setVisibility(View.GONE);
                     break;
             }
         }
@@ -53,7 +55,7 @@ public class ChoosePhotosActivity extends Activity {
         adapter = new InstagramPhotosAdapter(ChoosePhotosActivity.this, mPhotos);
         mRecyclerView.setAdapter(adapter);
         mRecyclerView.setVisibility(View.VISIBLE);
-        findViewById(R.id.progressBar).setVisibility(View.GONE);
+        mProgressBar.setVisibility(View.GONE);
         Log.v(TAG, mPhotos.size() + "");
     }
 
@@ -91,6 +93,7 @@ public class ChoosePhotosActivity extends Activity {
     private void initViews() {
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         mMakeCollageButton = (Button) findViewById(R.id.make_button);
+        mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
     }
 
     public void setMakeCollageButtonEnabled(boolean enabled) {

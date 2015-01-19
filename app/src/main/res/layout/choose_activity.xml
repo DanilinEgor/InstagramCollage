@@ -19,6 +19,14 @@
         android:background="@drawable/button_background"
         android:text="@string/make_collage" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="@string/unable_get_photos"
+        android:visibility="gone"
+        android:id="@+id/unable_textView"
+        android:layout_height="wrap_content" />
+
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"

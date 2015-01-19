@@ -8,4 +8,5 @@
     <string name="send">Отправить</string>
     <string name="email_text">Посмотри на коллаж из моих фотографий!</string>
     <string name="send_using">Послать через</string>
+    <string name="unable_get_photos">Невозможно получить фотографии</string>
 </resources>
